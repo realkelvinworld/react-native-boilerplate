@@ -102,13 +102,13 @@ export default function TabsLayout() {
 ## 2) NativeWind (Tailwind for React Native)
 
 We follow the NativeWind docs for setup.
-**Docs:** [https://www.nativewind.dev/](https://www.nativewind.dev/)
+**Docs:** [https://www.nativewind.dev/docs/getting-started/installation/](https://www.nativewind.dev/docs/getting-started/installation/)
 
 ### Install
 
 ```bash
-npm i nativewind tailwindcss      # or: yarn add ...
-npx tailwindcss init              # creates tailwind.config.js
+npm install nativewind react-native-reanimated@~3.17.4 react-native-safe-area-context@5.4.0     # or: bun add or yarn add ...
+npm install --dev tailwindcss@^3.4.17 prettier-plugin-tailwindcss@^0.5.11             # creates tailwind.config.js
 ```
 
 ### Tailwind config
@@ -135,8 +135,10 @@ module.exports = {
 module.exports = function (api) {
   api.cache(true);
   return {
-    presets: ["babel-preset-expo"],
-    plugins: ["nativewind/babel"],
+    presets: [
+      ["babel-preset-expo", { jsxImportSource: "nativewind" }],
+      "nativewind/babel",
+    ],
   };
 };
 ```
